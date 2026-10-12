@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.HabitTracker.Splash" parent="Theme.SplashScreen">
+        <!-- Set the background color of your splash screen -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <!-- Set your app icon (vector drawable or image) -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <!-- Optional: Animation duration if using an animated vector -->
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <!-- Theme to apply *after* the splash screen is dismissed -->
+        <item name="postSplashScreenTheme">@style/Theme.Habit_Tracker</item>
+    </style>
+
     <style name="Theme.Habit_Tracker" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
