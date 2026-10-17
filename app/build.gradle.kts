@@ -52,4 +52,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.navigation:navigation-compose:2.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 }
