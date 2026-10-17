@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Habit_Tracker">
         <activity
-            android:name=".Screens.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.HabitTracker.Splash"
@@ -23,12 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Screens.SplashScreen"
-            android:exported="false"
-            android:label="@string/title_activity_splash_screen"
-            android:theme="@style/Theme.HabitTracker.Splash"
-            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
