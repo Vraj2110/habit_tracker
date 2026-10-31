@@ -11,10 +11,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -31,6 +36,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,6 +53,7 @@ fun SignupScreen() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var rememberMe by remember { mutableStateOf(false) }
+    var passwordVisible by remember { mutableStateOf(false) }
 
     Column() {
 
@@ -87,7 +94,9 @@ fun SignupScreen() {
             Spacer(modifier = Modifier.height(10.dp))
             OutlinedTextField(
                 value = name, onValueChange = { name = it },
-                placeholder = { Text("Your full name") },
+                placeholder = { Text("Your full name",
+                    color = Color.Gray,
+                    fontSize = 13.sp) },
                 maxLines = 1,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -111,7 +120,8 @@ fun SignupScreen() {
             Spacer(modifier = Modifier.height(10.dp))
             OutlinedTextField(
                 value = email, onValueChange = { email = it },
-                placeholder = { Text("you@example.com") },
+                placeholder = { Text("you@example.com",color = Color.Gray,
+                    fontSize = 13.sp) },
                 maxLines = 1,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -135,8 +145,20 @@ fun SignupScreen() {
             Spacer(modifier = Modifier.height(10.dp))
             OutlinedTextField(
                 value = password, onValueChange = { password = it },
-                placeholder = { Text("Create a password") },
-                visualTransformation = PasswordVisualTransformation(),
+                placeholder = { Text("Create a password",
+                    color = Color.Gray,
+                    fontSize = 13.sp) },
+                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+
+                // 3. Add the trailing icon button
+                trailingIcon = {
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        Icon(
+                        imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                        contentDescription = if (passwordVisible) "Hide password" else "Show password"
+                    )
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(end = 10.dp),
@@ -169,8 +191,20 @@ fun SignupScreen() {
             Spacer(modifier = Modifier.height(10.dp))
             OutlinedTextField(
                 value = password, onValueChange = { password = it },
-                placeholder = { Text("Re-enter your password") },
-                visualTransformation = PasswordVisualTransformation(),
+                placeholder = { Text("Re-enter your password",
+                    color = Color.Gray,
+                    fontSize = 13.sp) },
+                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+
+                // 3. Add the trailing icon button
+                trailingIcon = {
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        Icon(
+                            imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            contentDescription = if (passwordVisible) "Hide password" else "Show password"
+                        )
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(end = 10.dp),
@@ -209,19 +243,19 @@ fun SignupScreen() {
 
                     Text(
                         buildAnnotatedString {
-                        withStyle(style = SpanStyle(color = Color.Gray)){
-                            append("I agree to the")
-                        }
-                        withStyle(style = SpanStyle(color = Appdefault)){
-                            append(" Terms of Service ")
-                        }
-                        withStyle(style = SpanStyle(color = Color.Gray)){
-                            append("and")
-                        }
-                        withStyle(style = SpanStyle(color = Appdefault)){
-                            append(" Privacy Policy")
-                        }
-                    },
+                            withStyle(style = SpanStyle(color = Color.Gray)) {
+                                append("I agree to the")
+                            }
+                            withStyle(style = SpanStyle(color = Appdefault)) {
+                                append(" Terms of Service ")
+                            }
+                            withStyle(style = SpanStyle(color = Color.Gray)) {
+                                append("and")
+                            }
+                            withStyle(style = SpanStyle(color = Appdefault)) {
+                                append(" Privacy Policy")
+                            }
+                        },
                         fontSize = 12.sp,
                         maxLines = 1
                     )
@@ -243,8 +277,10 @@ fun SignupScreen() {
                     disabledContentColor = Color.Black
                 )
             ) {
-                Text("Sign up",
-                    fontSize = 15.sp)
+                Text(
+                    "Sign up",
+                    fontSize = 15.sp
+                )
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -277,4 +313,4 @@ fun SignupScreen() {
             )
         }
     }
-    }
+}
