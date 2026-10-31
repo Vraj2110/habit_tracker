@@ -145,7 +145,7 @@ fun LoginScreen() {
                         onCheckedChange = { rememberMe = it },
                         colors = CheckboxDefaults.colors(
                             checkedColor = Color(0xFF6B66FF),
-                            uncheckedColor = Appdefault
+                            uncheckedColor = Color.LightGray
                         )
                     )
 
