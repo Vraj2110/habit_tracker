@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.habit_tracker.presentation.Screens.SignupScreen.SignupScreen
 import com.example.habit_tracker.presentation.Screens.loginscreen.LoginScreen
+import com.example.habit_tracker.presentation.naviagtion.NavGraph
 import com.example.habit_tracker.ui.theme.Habit_TrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Habit_TrackerTheme{
-                SignupScreen()
+                NavGraph()
             }
 
         }

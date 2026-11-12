@@ -42,12 +42,14 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.habit_tracker.presentation.UiComponent.TopBar
+import com.example.habit_tracker.presentation.naviagtion.Routes
 import com.example.habit_tracker.ui.theme.Appdefault
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun SignupScreen() {
+fun SignupScreen(navController: NavController) {
 
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -264,7 +266,7 @@ fun SignupScreen() {
 
             Spacer(modifier = Modifier.height(12.dp))
             Button(
-                onClick = { },
+                onClick = { navController.navigate(Routes.Task)},
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(55.dp)
@@ -296,7 +298,7 @@ fun SignupScreen() {
                     color = Color(0xFF6B66FF),
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp,
-                    modifier = Modifier.clickable { /* Navigate to Sign Up */ }
+                    modifier = Modifier.clickable { navController.navigate(Routes.Login)}
                 )
             }
 

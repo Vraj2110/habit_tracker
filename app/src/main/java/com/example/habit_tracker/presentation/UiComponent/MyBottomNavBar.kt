@@ -16,17 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import com.example.habit_tracker.R
+import com.example.habit_tracker.presentation.naviagtion.Routes
 import com.example.habit_tracker.ui.theme.Appdefault
 
-@Preview
 @Composable
-fun MyBottomNavBar() {
+fun MyBottomNavBar(navController: NavController, routes: Routes) {
 
     val navItems = listOf(
-        NavItem("Task", R.drawable.tasklogo),
-        NavItem("Groups", R.drawable.groupslogo),
-        NavItem("Calendar", R.drawable.calendarlogo),
-        NavItem("profile", R.drawable.profilelogo)
+        NavItem("Task", R.drawable.tasklogo, Routes.Task),
+        NavItem("Groups", R.drawable.groupslogo, Routes.Group),
+        NavItem("Calendar", R.drawable.calendarlogo, Routes.Calendar),
+        NavItem("profile", R.drawable.profilelogo, Routes.Profile)
     )
 
     NavigationBar(containerColor = MaterialTheme.colorScheme.surface,
@@ -59,9 +59,10 @@ fun MyBottomNavBar() {
     }
 }
 
-}
+
 
 data class NavItem(
     val title: String,
-    val icon: Int
+    val icon: Int,
+    val routes: Routes
 )

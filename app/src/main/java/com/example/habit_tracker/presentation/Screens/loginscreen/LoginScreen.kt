@@ -38,12 +38,15 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.max
+import androidx.navigation.NavController
+import com.example.habit_tracker.presentation.Screens.SignupScreen.SignupScreen
+import com.example.habit_tracker.presentation.naviagtion.Routes
 import com.example.habit_tracker.ui.theme.Appdefault
 
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -167,7 +170,7 @@ fun LoginScreen() {
 
             Spacer(modifier = Modifier.height(12.dp))
             Button(
-                onClick = { },
+                onClick = {navController.navigate(Routes.Task) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(55.dp)
@@ -197,7 +200,7 @@ fun LoginScreen() {
                     color = Color(0xFF6B66FF),
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp,
-                    modifier = Modifier.clickable { /* Navigate to Sign Up */ }
+                    modifier = Modifier.clickable { navController.navigate(Routes.Signup) }
                 )
             }
 
