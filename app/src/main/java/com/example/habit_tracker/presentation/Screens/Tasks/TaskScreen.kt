@@ -28,7 +28,7 @@ fun TaskScreen(
                 .background(MaterialTheme.colorScheme.background)
                 .padding(innerPadding)
         ) {
-            // Your screen content goes here
+            TaskProgressCard()
         }
     }
 }
