@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -40,11 +41,13 @@ import com.example.habit_tracker.ui.theme.Appdefault
 @Composable
 fun TaskProgressCard() {
 
-    OutlinedCard(
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 3.dp
+        ),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
         ),
-        border = BorderStroke(1.dp, Color.Black),
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)
