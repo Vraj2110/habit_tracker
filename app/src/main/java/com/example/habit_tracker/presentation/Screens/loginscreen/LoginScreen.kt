@@ -36,13 +36,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.habit_tracker.presentation.UiComponent.TopBar
 import com.example.habit_tracker.presentation.naviagtion.Routes
 import com.example.habit_tracker.ui.theme.Appdefault
-
 @Composable
 fun LoginScreen(
     navController: NavController,
@@ -59,7 +59,7 @@ fun LoginScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(40.dp))
         TopBar(darkTheme = darkTheme, onThemeToggle = onThemeToggle)
 
         Column(
@@ -67,7 +67,7 @@ fun LoginScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp)
         ) {
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(45.dp))
             Text(
                 text = "Welcome back.",
                 fontSize = 25.sp,

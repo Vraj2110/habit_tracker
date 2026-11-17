@@ -26,6 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -57,7 +58,7 @@ fun SignupScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        Spacer(modifier = Modifier.height(35.dp))
+        Spacer(modifier = Modifier.height(40.dp))
         TopBar(darkTheme = darkTheme, onThemeToggle = onThemeToggle)
 
         Column(
@@ -65,7 +66,7 @@ fun SignupScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp)
         ) {
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(25.dp))
             Text(
                 text = "Make room for progress",
                 fontSize = 25.sp,
@@ -255,7 +256,21 @@ fun SignupScreen(
                     fontSize = 14.sp,
                     modifier = Modifier.clickable { navController.popBackStack() }
                 )
+
+
+
             }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Text(
+                text = "Less noise. More momentum.",
+                color = Color.Gray,
+                fontSize = 12.sp,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(bottom = 24.dp)
+            )
         }
     }
 }

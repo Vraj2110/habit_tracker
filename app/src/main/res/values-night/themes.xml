@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.HabitTracker.Splash" parent="Theme.SplashScreen">
+        <!-- Set your splash screen background color for dark mode -->
+        <item name="windowSplashScreenBackground">@color/black</item>
+
+        <!-- Point directly back to your vector drawable -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/mainlogo_foreground</item>
+
+        <!-- Prevents the system from forcing a solid white circle mask behind it -->
+        <item name="windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
+
+        <item name="postSplashScreenTheme">@style/Theme.Habit_Tracker</item>
+    </style>
+    <style name="Theme.Habit_Tracker" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

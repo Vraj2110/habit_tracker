@@ -23,16 +23,16 @@ fun NavGraph(darkTheme: Boolean, onThemeToggle: () -> Unit) {
             SignupScreen(navController, darkTheme, onThemeToggle)
         }
         composable<Routes.Task> {
-            TaskScreen(navController)
+            TaskScreen(navController, darkTheme, onThemeToggle)
         }
         composable<Routes.Calendar> {
-            CalendarScreen(navController)
+            CalendarScreen(navController, darkTheme, onThemeToggle)
         }
         composable<Routes.Group> {
-            GroupScreen(navController)
+            GroupScreen(navController, darkTheme, onThemeToggle)
         }
         composable<Routes.Profile> {
-            ProfileScreen(navController)
+            ProfileScreen(navController, darkTheme, onThemeToggle)
         }
     }
 }
