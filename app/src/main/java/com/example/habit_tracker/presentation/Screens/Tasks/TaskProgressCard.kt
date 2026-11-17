@@ -110,18 +110,21 @@ fun TaskProgressCard() {
 
         Row(modifier = Modifier.padding(start = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
 
             // Space between icon and text
         ) {
             Icon(
                painter = painterResource(R.drawable.treading_up),
                 contentDescription = null, // Set a description if the icon conveys unique meaning
-                modifier = Modifier.size(18.dp),
+                modifier = Modifier.size(21.dp),
                 tint = Appdefault
             )
             Text(text = "2 more completed than yesterday.Keep it up!",
-                modifier = Modifier.padding(start = 20.dp))
+                maxLines = 1,
+                fontSize = 12.sp,
+                color = Color.Gray,
+                fontWeight = FontWeight.SemiBold)
         }
 
 
