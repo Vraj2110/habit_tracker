@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +27,7 @@ fun Completedprogress() {
 
     Column(
         modifier = Modifier.fillMaxWidth()
+            .padding(10.dp)
     ) {
 
         Row (
@@ -36,7 +38,7 @@ fun Completedprogress() {
 
             Text(
                 text = "Completed",
-                fontSize = 14.sp,
+                fontSize = 18.sp,
                 color = Color(0xFF70809F)
             )
 
@@ -57,7 +59,9 @@ fun Completedprogress() {
                 .height(6.dp),
             color = Appdefault,
             trackColor = Color(0xFFEEF0FF),
-            strokeCap = StrokeCap.Round
+            strokeCap = StrokeCap.Round,
+            drawStopIndicator = {},
+            gapSize = 0.dp
         )
     }
 }

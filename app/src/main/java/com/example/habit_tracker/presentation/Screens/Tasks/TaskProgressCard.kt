@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -23,12 +25,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.habit_tracker.R
 import com.example.habit_tracker.ui.theme.Appdefault
 
 @Preview
@@ -41,7 +46,9 @@ fun TaskProgressCard() {
         ),
         border = BorderStroke(1.dp, Color.Black),
         modifier = Modifier
-            .size(width = 250.dp, height = 150.dp)
+            .fillMaxWidth()
+            .padding(10.dp)
+            .size(width = 350.dp, height = 250.dp)
     ) {
 
         Row(modifier = Modifier
@@ -50,20 +57,20 @@ fun TaskProgressCard() {
 
             Text(
                 text = "Your daily momentum",
-                fontSize = 12.sp,
+                fontSize = 19.sp,
                 modifier = Modifier
                     .padding(13.dp),
                 textAlign = TextAlign.Center,
                 fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.W300
+                fontWeight = FontWeight.Normal
 
             )
 
             Text(
                 text = "Today",
-                fontSize = 10.sp,
+                fontSize = 15.sp,
                 fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.W400,
+                fontWeight = FontWeight.Normal,
                 color = Color.Gray,
 
                 modifier = Modifier.padding(13.dp)
@@ -76,10 +83,11 @@ fun TaskProgressCard() {
 
             CircularProgressIndicator(
                 progress = { 0.67f },
-                modifier = Modifier.size(60.dp),
+                modifier = Modifier.size(100.dp),
                 color = Appdefault,
                 trackColor = Color(0xFFEEF0FF),
-                strokeWidth = 7.dp
+                strokeWidth = 7.dp,
+                strokeCap = StrokeCap.Square
             )
 
             Spacer(Modifier.width(15.dp))
@@ -91,9 +99,31 @@ fun TaskProgressCard() {
                 Spacer(modifier = Modifier.height(18.dp))
 
                 PendingProgress()
+
+
+
             }
 
 
             }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Row(modifier = Modifier.padding(start = 20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
+
+            // Space between icon and text
+        ) {
+            Icon(
+               painter = painterResource(R.drawable.treading_up),
+                contentDescription = null, // Set a description if the icon conveys unique meaning
+                modifier = Modifier.size(18.dp),
+                tint = Appdefault
+            )
+            Text(text = "2 more completed than yesterday.Keep it up!",
+                modifier = Modifier.padding(start = 20.dp))
+        }
+
+
         }
     }
