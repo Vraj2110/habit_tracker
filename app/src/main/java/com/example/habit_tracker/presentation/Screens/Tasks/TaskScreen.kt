@@ -91,7 +91,8 @@ fun TaskScreen(
                 }
                 Row(
                     modifier = Modifier
-                        .padding(end = 10.dp)
+                        .padding(end = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
                         "View all",

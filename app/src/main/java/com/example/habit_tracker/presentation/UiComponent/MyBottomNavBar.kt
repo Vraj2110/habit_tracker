@@ -1,9 +1,5 @@
 package com.example.habit_tracker.presentation.UiComponent
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -12,9 +8,12 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.habit_tracker.R
 import com.example.habit_tracker.presentation.naviagtion.Routes
 import com.example.habit_tracker.ui.theme.Appdefault
@@ -29,22 +28,32 @@ fun MyBottomNavBar(navController: NavController, routes: Routes) {
         NavItem("profile", R.drawable.profilelogo, Routes.Profile)
     )
 
-    NavigationBar(containerColor = MaterialTheme.colorScheme.surface,
-        modifier = Modifier.height(100.dp)
+    NavigationBar(
+        containerColor = MaterialTheme.colorScheme.surface,
+        modifier = Modifier.height(80.dp)
     ) {
 
-        navItems.forEachIndexed { index, item ->
+        navItems.forEach { item ->
             NavigationBarItem(
                 icon = {
                     Icon(
                         painter = painterResource(item.icon),
-                        contentDescription = item.title
+                        contentDescription = item.title,
+                        modifier = Modifier.size(24.dp)
                     )
                 },
                 label = { Text(item.title) },
-                modifier = Modifier.size(30.dp),
-                //handling bottom navbar
-                onClick = {},
+                onClick = {
+                    if (item.routes != routes) {
+                        navController.navigate(item.routes) {
+                            popUpTo(navController.graph.startDestinationId) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                },
                 selected = item.routes == routes,
                 alwaysShowLabel = false,
                 colors = NavigationBarItemDefaults.colors(
@@ -52,14 +61,12 @@ fun MyBottomNavBar(navController: NavController, routes: Routes) {
                     selectedTextColor = Appdefault,
                     unselectedIconColor = Color.DarkGray,
                     unselectedTextColor = Color.DarkGray,
-                    indicatorColor = Appdefault.copy(alpha = 0.03f)
+                    indicatorColor = Appdefault.copy(alpha = 0.08f)
                 )
             )
         }
     }
 }
-
-
 
 data class NavItem(
     val title: String,
