@@ -78,7 +78,7 @@ fun GroupBothButton() {
                 disabledContentColor = Color.Unspecified,
                 disabledContainerColor = Color.Unspecified
             ),
-            shape = RoundedCornerShape(10.dp),
+            shape = RoundedCornerShape(12.dp),
 
             ) {
             Icon(

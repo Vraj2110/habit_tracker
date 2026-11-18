@@ -43,27 +43,40 @@ fun GroupScreen(
                 .padding(all = 10.dp)
         ) {
 
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-            Row(modifier = Modifier
-                .padding(start = 10.dp)) {
-                Text(text = "Shared goals. Clear next steps.",
+            Row(
+                modifier = Modifier
+                    .padding(start = 10.dp)
+            ) {
+                Text(
+                    text = "Shared goals. Clear next steps.",
                     color = Color.Gray,
                     fontWeight = FontWeight.W400,
                     fontFamily = FontFamily.SansSerif,
-                    fontSize = 16.sp)
+                    fontSize = 16.sp
+                )
             }
             Spacer(modifier = Modifier.height(12.dp))
 
             GroupBothButton()
-            Row(modifier = Modifier.padding(10.dp)
-                .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween) {
+            Row(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
 
-                Text("your workspaces",
-                    fontSize = 20.sp)
-                Text("4 Groups")
+                Text(
+                    "Your workspaces",
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text("4 Groups",
+                    fontWeight = FontWeight.W400,
+                    color = Color.Gray)
             }
+            GroupCard()
 
         }
 
