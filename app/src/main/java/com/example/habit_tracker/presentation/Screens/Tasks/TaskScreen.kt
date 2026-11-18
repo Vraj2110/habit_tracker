@@ -108,6 +108,8 @@ fun TaskScreen(
                 }
             }
 
+            Spacer(modifier = Modifier.height(10.dp))
+            TaskCard()
 
         }
     }
