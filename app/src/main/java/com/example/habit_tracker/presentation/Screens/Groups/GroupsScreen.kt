@@ -60,24 +60,7 @@ fun GroupScreen(
             Spacer(modifier = Modifier.height(12.dp))
 
             GroupBothButton()
-            Row(
-                modifier = Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-
-                Text(
-                    "Your workspaces",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Text("4 Groups",
-                    fontWeight = FontWeight.W400,
-                    color = Color.Gray)
-            }
-            GroupCard()
-
+            GroupGrid()
         }
 
 
