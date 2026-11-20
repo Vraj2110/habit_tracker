@@ -1,13 +1,11 @@
 package com.example.habit_tracker.presentation.Screens.Groups
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -43,7 +41,7 @@ fun GroupScreen(
                 .padding(all = 10.dp)
         ) {
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(1.dp))
 
             Row(
                 modifier = Modifier
@@ -60,9 +58,13 @@ fun GroupScreen(
             Spacer(modifier = Modifier.height(12.dp))
 
             GroupBothButton()
-            GroupGrid()
+            Spacer(modifier = Modifier.height(12.dp))
+            Box(modifier = Modifier.weight(1f)) {
+                GroupGrid(darkTheme = darkTheme)
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+
+            GroupCodeField()
         }
-
-
     }
 }
