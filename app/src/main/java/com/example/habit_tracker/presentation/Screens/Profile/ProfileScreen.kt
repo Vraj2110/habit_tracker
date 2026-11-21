@@ -2,6 +2,7 @@ package com.example.habit_tracker.presentation.Screens.Profile
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -27,7 +28,10 @@ fun ProfileScreen(
                 .background(MaterialTheme.colorScheme.background)
                 .padding(innerPadding)
         ) {
-            // Profile content
+            Column(modifier = Modifier.fillMaxSize()) {
+
+                ProfileInfoCard { }
+            }
         }
     }
 }

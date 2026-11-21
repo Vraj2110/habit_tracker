@@ -50,7 +50,7 @@ fun ProfileInfoCard(
     onProfileClick: () -> Unit = {}
 ) {
 
-    Card (
+    Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
