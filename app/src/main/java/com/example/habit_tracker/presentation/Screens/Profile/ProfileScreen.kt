@@ -19,7 +19,8 @@ fun ProfileScreen(
     darkTheme: Boolean = false,
     onThemeToggle: () -> Unit = {}
 ) {
-    Scaffold(topBar = {ProfileTopBar(darkTheme,onThemeToggle=onThemeToggle)},
+    Scaffold(
+        topBar = { ProfileTopBar(darkTheme, onThemeToggle = onThemeToggle) },
         bottomBar = { MyBottomNavBar(navController, Routes.Profile) }
     ) { innerPadding ->
         Box(
@@ -31,6 +32,11 @@ fun ProfileScreen(
             Column(modifier = Modifier.fillMaxSize()) {
 
                 ProfileInfoCard { }
+
+                ProfileThemeCard(
+                    darkTheme = darkTheme,
+                    onThemeToggle = onThemeToggle
+                )
             }
         }
     }
