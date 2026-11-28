@@ -1,6 +1,5 @@
 package com.example.habit_tracker.presentation.Screens.Groups
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,7 +12,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -41,10 +39,9 @@ fun GroupCodeField(darkTheme: Boolean = false) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 6.dp)
-            .background(Color(0xFFEEF0FE)),
+            .padding(horizontal = 6.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (darkTheme) Color(0xFF161920) else Color.White
+            containerColor = if (darkTheme) Color(0xFF161920) else Color(0xFFF4F6FF)
         ),
         shape = RoundedCornerShape(16.dp)
     ) {
@@ -99,8 +96,8 @@ fun GroupCodeField(darkTheme: Boolean = false) {
                         )
                     },
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedContainerColor = if (darkTheme) Color(0xFF13161C) else Color(0xFFF8FAFC),
-                        unfocusedContainerColor = if (darkTheme) Color(0xFF13161C) else Color(0xFFF8FAFC),
+                        focusedContainerColor = if (darkTheme) Color(0xFF13161C) else Color.White,
+                        unfocusedContainerColor = if (darkTheme) Color(0xFF13161C) else Color.White,
                         focusedBorderColor = Color.Transparent,
                         unfocusedBorderColor = Color.Transparent,
                         focusedTextColor = if (darkTheme) Color.White else Color(0xFF1E293B),

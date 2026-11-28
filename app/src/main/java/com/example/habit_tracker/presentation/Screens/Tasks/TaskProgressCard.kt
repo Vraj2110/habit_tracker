@@ -1,9 +1,11 @@
 package com.example.habit_tracker.presentation.Screens.Tasks
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -76,14 +78,25 @@ fun TaskProgressCard(darkTheme: Boolean = false) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                CircularProgressIndicator(
-                    progress = { 0.67f },
+                Box(
                     modifier = Modifier.size(90.dp),
-                    color = Appdefault,
-                    trackColor = if (darkTheme) Color(0xFF2A2F3D) else Color(0xFFEEF0FF),
-                    strokeWidth = 8.dp,
-                    strokeCap = StrokeCap.Round
-                )
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(
+                        progress = { 0.67f },
+                        modifier = Modifier.fillMaxSize(),
+                        color = Appdefault,
+                        trackColor = if (darkTheme) Color(0xFF2A2F3D) else Color(0xFFEEF0FF),
+                        strokeWidth = 8.dp,
+                        strokeCap = StrokeCap.Round
+                    )
+                    Text(
+                        text = "67%",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                }
 
                 Spacer(modifier = Modifier.width(16.dp))
 

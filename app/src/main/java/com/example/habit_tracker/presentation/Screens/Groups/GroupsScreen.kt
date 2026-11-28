@@ -58,13 +58,13 @@ fun GroupScreen(
             Spacer(modifier = Modifier.height(12.dp))
 
             GroupBothButton()
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(4.dp))
             Box(modifier = Modifier.weight(1f)) {
                 GroupGrid(darkTheme = darkTheme)
             }
             Spacer(modifier = Modifier.height(12.dp))
 
-            GroupCodeField()
+            GroupCodeField(darkTheme = darkTheme)
         }
     }
 }

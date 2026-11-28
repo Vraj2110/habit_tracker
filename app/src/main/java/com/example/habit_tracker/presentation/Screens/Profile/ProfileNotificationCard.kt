@@ -9,14 +9,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,131 +27,154 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.habit_tracker.R
 import com.example.habit_tracker.ui.theme.Appdefault
 
-@Preview
 @Composable
-fun ProfileNotificationCard() {var isEnabled by remember { mutableStateOf(true) }
+fun ProfileNotificationCard(darkTheme: Boolean = false) {
+    var isEnabled by remember { mutableStateOf(true) }
     var isFeedBack by remember { mutableStateOf(true) }
-
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        border = BorderStroke(1.dp, Color(0xFFE2E8F0))
+            .padding(horizontal = 16.dp, vertical = 4.dp),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = if (darkTheme) Color(0xFF161920) else Color.White
+        ),
+        border = BorderStroke(
+            width = 1.dp,
+            color = if (darkTheme) Color(0xFF2A2F3D) else Color(0xFFE2E8F0)
+        )
     ) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 5.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-
-            Icon(painter = painterResource(R.drawable.bell),
+            Icon(
+                painter = painterResource(R.drawable.bell),
                 contentDescription = "Notification",
                 tint = Color.Gray,
-                modifier = Modifier.size(25.dp)
+                modifier = Modifier.size(24.dp)
             )
 
-            Column(modifier = Modifier.padding(10.dp).weight(1f)) {
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .weight(1f)
+            ) {
+                Text(
+                    text = "Task assignments",
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    maxLines = 1
+                )
 
-                Text("Task assignments", maxLines = 1)
+                Spacer(modifier = Modifier.height(2.dp))
 
-                Spacer(modifier = Modifier.height(5.dp))
-
-                Text("When a teammate assigns you work", maxLines = 1)
+                Text(
+                    text = "When a teammate assigns you work",
+                    fontSize = 12.sp,
+                    color = Color.Gray,
+                    maxLines = 1
+                )
             }
 
-            Spacer(modifier = Modifier.width(90.dp))
-
-            androidx.compose.material3.Switch(modifier = Modifier,
+            Switch(
                 checked = isEnabled,
                 onCheckedChange = { isEnabled = it },
                 colors = SwitchColors(
-                    Color.White,
-                    uncheckedTrackColor = Color.LightGray,
+                    checkedThumbColor = Color.White,
+                    checkedTrackColor = Appdefault,
+                    checkedBorderColor = Color.Transparent,
+                    checkedIconColor = Color.Transparent,
                     uncheckedThumbColor = Color.White,
+                    uncheckedTrackColor = Color.LightGray,
                     uncheckedBorderColor = Color.LightGray,
                     uncheckedIconColor = Color.LightGray,
-                    checkedTrackColor = Appdefault,
-                    checkedBorderColor = Color.Unspecified,
-                    checkedIconColor = Color.Unspecified,
-                    disabledCheckedThumbColor = Color.Unspecified,
-                    disabledCheckedTrackColor = Color.Unspecified,
-                    disabledCheckedBorderColor = Color.Unspecified,
-                    disabledCheckedIconColor = Color.Unspecified,
-                    disabledUncheckedThumbColor = Color.Unspecified,
-                    disabledUncheckedTrackColor = Color.Unspecified,
-                    disabledUncheckedBorderColor = Color.Unspecified,
-                    disabledUncheckedIconColor = Color.Unspecified
+                    disabledCheckedThumbColor = Color.Transparent,
+                    disabledCheckedTrackColor = Color.Transparent,
+                    disabledCheckedBorderColor = Color.Transparent,
+                    disabledCheckedIconColor = Color.Transparent,
+                    disabledUncheckedThumbColor = Color.Transparent,
+                    disabledUncheckedTrackColor = Color.Transparent,
+                    disabledUncheckedBorderColor = Color.Transparent,
+                    disabledUncheckedIconColor = Color.Transparent
                 )
             )
-
-
         }
 
         HorizontalDivider(
             thickness = 1.dp,
-            color = Color.LightGray
-//                .copy(alpha = 0.25f)
+            color = if (darkTheme) Color(0xFF2A2F3D) else Color(0xFFF1F5F9)
         )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 5.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             Icon(
                 painter = painterResource(R.drawable.calendarlogo),
-                contentDescription = "Phone Vibrate",
+                contentDescription = "Calendar",
                 tint = Color.Gray,
-                modifier = Modifier.size(25.dp)
+                modifier = Modifier.size(24.dp)
             )
 
-            Column(modifier = Modifier.padding(10.dp).weight(1f)) {
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .weight(1f)
+            ) {
+                Text(
+                    text = "Due date reminders",
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    maxLines = 1
+                )
 
-                Text("Due date reminders", maxLines = 1)
+                Spacer(modifier = Modifier.height(2.dp))
 
-                Spacer(modifier = Modifier.height(5.dp))
-
-                Text("30 minutes before a deadline", maxLines = 1)
+                Text(
+                    text = "30 minutes before a deadline",
+                    fontSize = 12.sp,
+                    color = Color.Gray,
+                    maxLines = 1
+                )
             }
 
-            Spacer(modifier = Modifier.width(40.dp))
-
-            androidx.compose.material3.Switch(modifier = Modifier,
+            Switch(
                 checked = isFeedBack,
                 onCheckedChange = { isFeedBack = it },
                 colors = SwitchColors(
-                    Color.White,
-                    uncheckedTrackColor = Color.LightGray,
+                    checkedThumbColor = Color.White,
+                    checkedTrackColor = Appdefault,
+                    checkedBorderColor = Color.Transparent,
+                    checkedIconColor = Color.Transparent,
                     uncheckedThumbColor = Color.White,
+                    uncheckedTrackColor = Color.LightGray,
                     uncheckedBorderColor = Color.LightGray,
                     uncheckedIconColor = Color.LightGray,
-                    checkedTrackColor = Appdefault,
-                    checkedBorderColor = Color.Unspecified,
-                    checkedIconColor = Color.Unspecified,
-                    disabledCheckedThumbColor = Color.Unspecified,
-                    disabledCheckedTrackColor = Color.Unspecified,
-                    disabledCheckedBorderColor = Color.Unspecified,
-                    disabledCheckedIconColor = Color.Unspecified,
-                    disabledUncheckedThumbColor = Color.Unspecified,
-                    disabledUncheckedTrackColor = Color.Unspecified,
-                    disabledUncheckedBorderColor = Color.Unspecified,
-                    disabledUncheckedIconColor = Color.Unspecified
+                    disabledCheckedThumbColor = Color.Transparent,
+                    disabledCheckedTrackColor = Color.Transparent,
+                    disabledCheckedBorderColor = Color.Transparent,
+                    disabledCheckedIconColor = Color.Transparent,
+                    disabledUncheckedThumbColor = Color.Transparent,
+                    disabledUncheckedTrackColor = Color.Transparent,
+                    disabledUncheckedBorderColor = Color.Transparent,
+                    disabledUncheckedIconColor = Color.Transparent
                 )
             )
         }
     }
-
 }
