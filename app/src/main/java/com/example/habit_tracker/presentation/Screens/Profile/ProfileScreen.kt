@@ -10,6 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.habit_tracker.presentation.UiComponent.MyBottomNavBar
 import com.example.habit_tracker.presentation.naviagtion.Routes
@@ -38,11 +39,14 @@ fun ProfileScreen(
                     darkTheme = darkTheme   ,
                     onThemeToggle = onThemeToggle
                 )
-                Text("App Preferences")
+                Text("App Preferences"
+                , modifier = Modifier.padding(start = 20.dp))
                 ProfileAppPreferencesToggleCard()
 
-                Text("Notification")
+                Text("Notification", modifier = Modifier.padding(start = 20.dp))
                 ProfileNotificationCard()
+
+                ProfileLogoutButton()
 
             }
         }

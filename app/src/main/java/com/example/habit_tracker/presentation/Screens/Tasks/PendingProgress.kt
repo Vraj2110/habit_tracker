@@ -15,38 +15,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
-@Preview
 @Composable
-fun PendingProgress() {
-
-    Column (
-        modifier = Modifier.fillMaxWidth()
-            .padding(10.dp)
+fun PendingProgress(darkTheme: Boolean = false) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 4.dp)
     ) {
-
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             Text(
                 text = "Pending",
-                fontSize = 18.sp,
-                color = Color(0xFF70809F)
+                fontSize = 15.sp,
+                color = Color.Gray
             )
-
 
             Text(
                 text = "04",
-                fontSize = 23.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF192238)
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = if (darkTheme) Color.White else Color(0xFF192238)
             )
         }
 
@@ -58,7 +52,7 @@ fun PendingProgress() {
                 .fillMaxWidth()
                 .height(6.dp),
             color = Color(0xFFA6B1C3),
-            trackColor = Color(0xFFEEF0FF),
+            trackColor = if (darkTheme) Color(0xFF2A2F3D) else Color(0xFFEEF0FF),
             strokeCap = StrokeCap.Round,
             drawStopIndicator = {},
             gapSize = 0.dp
