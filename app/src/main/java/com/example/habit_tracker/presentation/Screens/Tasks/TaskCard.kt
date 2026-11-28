@@ -1,18 +1,16 @@
 package com.example.habit_tracker.presentation.Screens.Tasks
 
-import android.graphics.drawable.shapes.Shape
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
@@ -31,134 +29,132 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.habit_tracker.R
 import com.example.habit_tracker.ui.theme.Appdefault
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun TaskCard() {
+data class TaskItem(
+    val title: String,
+    val category: String,
+    val priority: String, // "High", "Medium", "Low"
+    val time: String,
+    val initialChecked: Boolean = false
+)
 
-    var checked by remember { mutableStateOf(true) }
+@Composable
+fun TaskCard(
+    task: TaskItem,
+    darkTheme: Boolean = false
+) {
+    var checked by remember { mutableStateOf(task.initialChecked) }
+
+    val priorityBg = when (task.priority.lowercase()) {
+        "high" -> if (darkTheme) Color(0xFF4C1D1D) else Color(0xFFFFE4E6)
+        "medium" -> if (darkTheme) Color(0xFF451A03) else Color(0xFFFEF3C7)
+        else -> if (darkTheme) Color(0xFF064E3B) else Color(0xFFDCFCE7)
+    }
+
+    val priorityText = when (task.priority.lowercase()) {
+        "high" -> if (darkTheme) Color(0xFFFCA5A5) else Color(0xFFE11D48)
+        "medium" -> if (darkTheme) Color(0xFFFCD34D) else Color(0xFFD97706)
+        else -> if (darkTheme) Color(0xFF86EFAC) else Color(0xFF16A34A)
+    }
 
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp)
-            .size(height = 140.dp, width = 350.dp),
+            .padding(vertical = 4.dp),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 3.dp,
+            defaultElevation = 2.dp,
         ),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        )
+            containerColor = if (darkTheme) Color(0xFF161920) else Color.White
+        ),
+        shape = RoundedCornerShape(16.dp)
     ) {
-
         Column(
-            modifier = Modifier.fillMaxHeight(),
-            verticalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text(
-                text = "Review homepage wireframes",
-                modifier = Modifier.padding(start = 60.dp, top = 15.dp),
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 17.sp,
-                fontFamily = FontFamily.SansSerif
-            )
-
             Row(
-                modifier = Modifier
-                    .padding(start = 10.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start,
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-
-                Checkbox(
-                    checked = checked,
-                    onCheckedChange = { checked = it },
-                    colors = CheckboxDefaults.colors(
-                        checkedColor = Appdefault,
-                        uncheckedColor = Color.Gray,
-                    ),
-                    modifier = Modifier
-                        .size(40.dp)
-                )
-
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp), horizontalArrangement = Arrangement.SpaceBetween
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.weight(1f)
                 ) {
-                    Text(
-                        text = "Design Studio",
-                        modifier = Modifier.padding(top = 2.dp),
-                        fontSize = 14.sp,
-                        fontFamily = FontFamily.SansSerif,
-                        fontWeight = FontWeight.Normal,
-                        color = Color.Gray,
+                    Checkbox(
+                        checked = checked,
+                        onCheckedChange = { checked = it },
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = Appdefault,
+                            uncheckedColor = Color.Gray
+                        ),
+                        modifier = Modifier.size(28.dp)
                     )
-
+                    Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "High",
-                        modifier = Modifier
-                            .background(
-                                color = Color.Red.copy(alpha = 0.3f),
-                                shape = RoundedCornerShape(8.dp)
-                            )
-                            .padding(horizontal = 13.dp, vertical = 3.dp),
-                        color = Color(0xFFC04258),
+                        text = task.title,
                         fontWeight = FontWeight.SemiBold,
-                        fontSize = 14.sp
+                        fontSize = 16.sp,
+                        fontFamily = FontFamily.SansSerif,
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                 }
+
+                Text(
+                    text = task.priority,
+                    modifier = Modifier
+                        .background(
+                            color = priorityBg,
+                            shape = RoundedCornerShape(8.dp)
+                        )
+                        .padding(horizontal = 12.dp, vertical = 4.dp),
+                    color = priorityText,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 12.sp
+                )
             }
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 60.dp, bottom = 20.dp, end = 10.dp),
-                horizontalArrangement = Arrangement.Start
+                    .padding(start = 40.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-
-                Icon(
-                    painter = painterResource(R.drawable.clock),
-                    contentDescription = "watch",
-                    tint = Color.Gray,
-                    modifier = Modifier
-                        .size(17.dp)
-                )
-
-                Spacer(modifier = Modifier.width(7.dp))
                 Text(
-                    "Today",
+                    text = task.category,
+                    fontSize = 13.sp,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Gray,
-                    fontSize = 13.sp
+                    color = Color.Gray
                 )
 
-                Text(",",
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Normal,
-                    color = Color.Gray,
-                    fontSize = 13.sp)
-
-                Spacer(modifier = Modifier.width(2.dp))
-                Text(
-                    "2:00 PM",
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Normal,
-                    color = Color.Gray,
-                    fontSize = 13.sp
-                )
-
-
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.clock),
+                        contentDescription = "Time",
+                        tint = Color.Gray,
+                        modifier = Modifier.size(14.dp)
+                    )
+                    Text(
+                        text = task.time,
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.Gray,
+                        fontSize = 12.sp
+                    )
+                }
             }
         }
-
-
     }
-
 }
